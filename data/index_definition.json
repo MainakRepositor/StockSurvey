@@ -1,0 +1,46 @@
+[
+    {"name": "S&P 500", "index": "^SPX", "reference_security": "SPY",
+        "url": "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies",
+        "df": 0
+    },
+    {"name": "Nasdaq-100", "index": "^NDX", "reference_security": "QQQ",
+        "url": "https://en.wikipedia.org/wiki/Nasdaq-100",
+        "df": 3
+    },
+    {"name": "S&P 100", "index": "^OEX", "reference_security": "SPY",
+        "url": "https://en.wikipedia.org/wiki/S%26P_100",
+        "df": 2
+    },
+    {"name": "Hang Seng Index", "index": "^HSI", "reference_security": "2800.HK",
+        "url": "http://www.etnet.com.hk/www/eng/stocks/indexes_detail.php?subtype=HSI",
+        "df": 2
+    },
+    {"name": "Hang Seng Small-cap Index", "index": "^HCS", "reference_security": "2800.HK",
+        "url": "http://www.aastocks.com/en/stocks/market/index/hk-index-con.aspx?index=HSHKSI&t=2&hk=0",
+        "df": 17
+    },
+    {"name": "Hang Seng Mid-cap Index", "index": "^HCM", "reference_security": "2800.HK",
+        "url": "http://www.etnet.com.hk/www/eng/stocks/indexes_detail.php?subtype=HCM",
+        "df": 2
+    },
+    {"name": "Hang Seng Large-cap Index", "index": "^HCL", "reference_security": "2800.HK",
+        "url": "http://www.etnet.com.hk/www/eng/stocks/indexes_detail.php?subtype=hcl",
+        "df": 2
+    },
+    {"name": "Hang Seng Tech Index", "index": "^HSTECH", "reference_security": "2800.HK",
+        "url": "http://www.etnet.com.hk/www/eng/stocks/indexes_detail.php?subtype=teh",
+        "df": 2
+    },
+    {"name": "Hang Seng 35 Index", "index": "^H35", "reference_security": "2800.HK",
+        "url": "http://www.etnet.com.hk/www/eng/stocks/indexes_detail.php?subtype=h35",
+        "df": 2
+    },
+    {"name": "US Dividend Kings", "index": "^DVDKING", "reference_security": "SPY",
+        "url": "https://www.fool.com/investing/stock-market/types-of-stocks/dividend-stocks/dividend-kings/",
+        "df": 0
+    },
+    {"name": "S&P/TSX 60", "index": "^TX60", "reference_security": "XIU.TO",
+        "url": "https://en.wikipedia.org/wiki/S%26P/TSX_60",
+        "df": 0
+    }
+]
