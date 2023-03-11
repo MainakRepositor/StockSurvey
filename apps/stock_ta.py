@@ -253,67 +253,7 @@ def Main():
                 data = add_ADX(data, period = st.number_input("ADX period", value = 13)) \
                         if do_ADX else data
 
-        with st.expander('advanced settings'):
-            l_col, m_col , r_col = st.columns(3)
-            with l_col:
-                st.write('#### Market Type Classification')
-                mkt_class_period = int(st.number_input('peroid (match your trading time domain)', value = 66))
-                mkt_class = market_classification(data, period = mkt_class_period,
-                                debug = False) if mkt_class_period else None
-                if mkt_class:
-                    side_stock_info.write(f'market is `{mkt_class}` for the last **{mkt_class_period} bars**')
-                    side_stock_info.write(f'[kaufman efficiency_ratio](https://strategyquant.com/codebase/kaufmans-efficiency-ratio-ker/) ({mkt_class_period} bars): `{round(efficiency_ratio(data, period = mkt_class_period),2)}`')
-                st.write('#### Events')
-                do_div = st.checkbox('show ex-dividend dates')
-                if do_div:
-                    data = add_div_col(df_price = data, df_div = stock_obj.dividends)
-                    side_stock_info.write(
-                        stock_obj.dividends[stock_obj.dividends.index > pd.Timestamp(start_date)]
-                        )
-                do_earnings = st.checkbox('show earning dates')
-                if do_earnings and isinstance(stock_obj.calendar, pd.DataFrame):
-                    data = add_event_col(df_price = data,
-                                df_events = stock_obj.calendar.T.set_index('Earnings Date'),
-                                event_col_name= "earnings")
-                    side_stock_info.write(stock_obj.calendar.T)
-
-                if do_MACD and ma_type:
-                    st.write("#### Elder's Impulse System")
-                    impulse_ema = st.selectbox('select moving average for impulse',
-                                    options = [''] + get_moving_average_col(data.columns))
-                    data = add_Impulse(data, ema_name = impulse_ema) if impulse_ema else data
-
-            avg_pen_data = None
-            with m_col:
-                if ma_type:
-                    st.write("#### Average Penetration for Entry/ SafeZone")
-                    fair_col = st.selectbox('compute average penetration below',
-                                    options = [''] + get_moving_average_col(data.columns))
-                    avg_pen_data = add_avg_penetration(df = data, fair_col = fair_col,
-                                        num_of_bars = st.number_input('period (e.g. 4-6 weeks)', value = 30), # 4-6 weeks
-                                        use_ema = st.checkbox('use EMA for penetration', value = False),
-                                        ignore_zero = st.checkbox('ignore days without penetration', value = True),
-                                        coef = st.number_input(
-                                            'SafeZone Coefficient (stops should be set at least 1x Average Penetration)',
-                                            value = 1.0, step = 0.1),
-                                        get_df = True, debug = True
-                                    ) if fair_col else None
-            with r_col:
-                if do_MACD:
-                    st.write('#### MACD Bullish Divergence')
-                    if st.checkbox('Show Divergence'):
-                        data = detect_macd_divergence(data,
-                                period = st.number_input('within number of bars (should be around 3 months)', value = 66),
-                                threshold = st.number_input('current low threshold (% of previous major low)', value = 0.95),
-                                debug = True
-                                )
-                st.write(f'#### Detect Kangaroo Tails')
-                tail_type = st.selectbox('Tail Type',
-                                options = ['', 0, 1, -1])
-                data = detect_kangaroo_tails(data,
-                        atr_threshold = st.number_input('ATR Threshold', value = 2.0),
-                        period = st.number_input('period', value = 22), tail_type = tail_type) \
-                        if tail_type else data
+        
 
         beta_events_to_plot, l_events_to_color, l_col_to_scatter = [], [], []
         show_beta_features(data = data, l_events_to_color=l_events_to_color,
