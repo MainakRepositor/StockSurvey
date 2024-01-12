@@ -1,4 +1,4 @@
-streamlit==1.11.1
+streamlit==1.30.0
 stqdm>=0.0.2
 streamlit-pydantic==0.5.0
 streamlit-authenticator==0.1.4
